@@ -5192,11 +5192,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Lenovo\\Desktop\\ViewBag-ViewData-TempData-SqlConnection-DependencyInjection\\FrontToBack\\FrontToBack\\FrontToBack.csproj",
+      "projectUniqueName": "C:\\Users\\Lenovo\\Desktop\\FrontToBack\\FrontToBack\\FrontToBack\\FrontToBack.csproj",
       "projectName": "FrontToBack",
-      "projectPath": "C:\\Users\\Lenovo\\Desktop\\ViewBag-ViewData-TempData-SqlConnection-DependencyInjection\\FrontToBack\\FrontToBack\\FrontToBack.csproj",
+      "projectPath": "C:\\Users\\Lenovo\\Desktop\\FrontToBack\\FrontToBack\\FrontToBack\\FrontToBack.csproj",
       "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Lenovo\\Desktop\\ViewBag-ViewData-TempData-SqlConnection-DependencyInjection\\FrontToBack\\FrontToBack\\obj\\",
+      "outputPath": "C:\\Users\\Lenovo\\Desktop\\FrontToBack\\FrontToBack\\FrontToBack\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
