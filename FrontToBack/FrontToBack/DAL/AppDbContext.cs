@@ -15,6 +15,21 @@ namespace FrontToBack.DAL
         public DbSet<Category> Categories { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductImage> ProductImages { get; set; }
+        public DbSet<FlowerExpert> FlowerExperts { get; set; }
+        public DbSet<ExpertProfession> ExpertProfessions { get; set; }
+        public DbSet<ExpertProfessionFlowerExpert> ExpertProfessionFlowerExperts { get; set; }
+        public DbSet<Blog> Blogs { get; set; }
+        public DbSet<BlogSlider> BlogSliders { get; set; }
+
+        public DbSet<InstagramImagesSlider> InstagramImagesSlider { get; set; }
+
+
+
+
+
+
+
+
 
 
 

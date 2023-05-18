@@ -21,6 +21,15 @@ namespace FrontToBack.Controllers
             homevm.SliderContent = _appDbContext.SliderContent.FirstOrDefault();
             homevm.Products = _appDbContext.Products.Include(p=>p.ProductImages).ToList();
             homevm.Categories = _appDbContext.Categories.ToList();
+            homevm.FlowerExperts = _appDbContext.FlowerExperts
+              .Include(fe => fe.ExpertProfessionFlowerExperts)
+              .ThenInclude(ef => ef.ExpertProfession)
+              .ToList();
+            homevm.Blogs = _appDbContext.Blogs.ToList();
+            homevm.BlogSliders = _appDbContext.BlogSliders.ToList();
+            homevm.InstagramImagesSliders = _appDbContext.InstagramImagesSlider.ToList();
+
+
             return View(homevm);
         }
     }
