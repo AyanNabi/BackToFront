@@ -28,7 +28,7 @@
 
         <!-- SLIDER END -->
 
-        <!-- PRODUCTS START -->
+       <!-- PRODUCTS START -->
 
         <section id="products">
             <div class="container">
@@ -42,9 +42,15 @@
                                     <li><a href="" data-id="all">All</a></li>
                                     @foreach (var item in Model.Categories)
                                    {
-                                    <li><a href="" data-id="@((item.Name).ToLower())">@item.Name</a></li>
+                                    <li><a href="" data-id="@(item.Name.ToLower())">@(item.Name)</a></li>
                                        
                                    }
+
+                                  @*  <li><a href="" data-id="winter">Winter</a></li>
+                                    <li><a href="" data-id="various">Various</a></li>
+                                    <li><a href="" data-id="exotic">Exotic</a></li>
+                                    <li><a href="" data-id="green">Greens</a></li>
+                                    <li><a href="" data-id="cactuse">Cactuses</a></li>*@
                                 </ul>
                             </li>
                         </ul>
@@ -52,7 +58,7 @@
                             <li><a href="" data-id="all">All</a></li>
                             @foreach (var item in Model.Categories)
                                    {
-                                    <li><a href="" data-id="@((item.Name).ToLower())">@item.Name</a></li>
+                                    <li><a href="" data-id="@(item.Name.ToLower())">@(item.Name)</a></li>
                                        
                                    }
                         </ul>
@@ -64,28 +70,28 @@
                         </ul>
                     </div>
                 </div>
+
                 <div class="row">
-                    <div class="col-sm-6 col-md-4 col-lg-3 mt-3">
-                        @foreach (var item in Model.Products)
-                       {
-                             <div class="product-item text-center" data-id="@((item.category.Name).ToLower())">
+                    @foreach (var item in Model.Products)
+                   {
+                         <div class="col-sm-6 col-md-4 col-lg-3 mt-3">
+                        <div class="product-item text-center" data-id="@(item.category.Name.ToLower())">
                             <div class="img">
                                 <a href="">
-                                    <img src="~/img/@(item.ProductImages.FirstOrDefault(i=>i.ProductId==item.Id))" class="img-fluid" alt="">
+                                    <img src="img/@(item.ProductImages.FirstOrDefault(i=>i.IsMainImage)!=null?item.ProductImages.FirstOrDefault(i=>i.IsMainImage).ImageUrl:"")" class="img-fluid" alt="">
                                 </a>
                             </div>
                             <div class="title mt-3">
-                                <h6>@item.Name</h6>
+                                <h6>MAJESTY PALM</h6>
                             </div>
                             <div class="price">
                                 <span class="text-black-50">Add to cart</span>
-                                <span class="text-black-50">@item.Price</span>
+                                <span class="text-black-50">$259</span>
                             </div>
                         </div>
-                       }
-                      
                     </div>
-                   
+                   }
+                 
                 </div>
             </div>
         </section>
