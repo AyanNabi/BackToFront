@@ -1,5 +1,10 @@
-﻿using DataNotations.Models;
+﻿using DataNotations.DAL;
+using DataNotations.Models;
+using DataNotations.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 
 namespace DataNotations.Controllers
 {
@@ -16,8 +21,26 @@ namespace DataNotations.Controllers
 
         //    };
         //}
+        readonly AppDbContext _appDbContext;
+        public HomeController(AppDbContext appDbContext)
+        {
+            _appDbContext = appDbContext;
+        }
+
         public IActionResult Index()
         {
+        //    [AttributeUsage(AttributeTargets.Property, AllowMultiple = false, Inherited = false)]
+        //    public class IsEmptyAttribute : ValidationAttribute
+        //{
+        //    public override bool IsValid(object value)
+        //    {
+        //        var inputValue = value as string;
+        //        return !string.IsNullOrEmpty(inputValue);
+        //    }
+        //}
+        //HomeVM homevm = new HomeVM();
+        //    homevm.Students = _appDbContext.Students;
+
            
             //Student student1 = new Student()
             //{
