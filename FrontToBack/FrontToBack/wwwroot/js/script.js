@@ -1,5 +1,42 @@
 $(document).ready(function () {
 
+    //loader
+    let productsCount=$("#productsCount").val();
+    let skip = 2;
+    $('#product-loader').click(function () {
+        $.ajax({
+            method: "get",
+            url: "/product/LoadMore?skip="+skip,
+            success: function (res) {
+                $("#productlist").append(res);
+                skip += 2;
+                if (skip >= productsCount) {
+                    $("#product-loader").remove();
+                }
+
+            }
+        })
+    });
+
+    //search
+    $(document).on('keyup', '#input-search', function () {
+        $("#searchlist li ").slice(1).remove();
+        let searchletter = $("#input-search").val().trim();
+        if (searchletter.length > 0) {
+            $.ajax({
+                method: "get",
+                url: "/product/search?searchletter=" + searchletter,
+                success: function (res) {
+
+                    $("#searchlist").append(res);
+
+                }
+            })
+
+        }
+       
+    })
+
     // HEADER
 
     $(document).on('click', '#search', function () {

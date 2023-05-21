@@ -1,0 +1,5 @@
+﻿@model List<Product>
+@foreach(var item in Model){
+    <li><a asp-controller="product" asp-action="detail">@item.Name</a></li>
+
+}
