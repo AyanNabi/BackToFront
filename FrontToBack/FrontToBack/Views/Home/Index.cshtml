@@ -1,8 +1,13 @@
-﻿ @model HomeVM
+﻿@using FrontToBack.Services
+ @model HomeVM
+ @inject ISum sum
+@{
+    var sums = sum.Sum(1, 2);
+}
 <!-- SLIDER START -->
 
 
-
+<h1>sums</h1>
         <section id="slider">
             <div class="owl-carousel slider">
                 @foreach (var item in Model.SliderImages)
