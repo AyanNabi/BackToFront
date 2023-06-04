@@ -90,7 +90,19 @@ namespace FrontToBack.Controllers
         {
             //string result= Request.Cookies["p515"];
             var result = Request.Cookies["Basket"];
-            var products= JsonConvert.DeserializeObject<List<BasketVM>>(result);
+            var products = JsonConvert.DeserializeObject<List<BasketVM>>(result);
+            if (result==null)
+            {
+
+                products= new List<BasketVM>();
+            }
+            else
+            { 
+
+
+
+            }
+        
             return View(products);
 
         }
