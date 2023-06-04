@@ -3,6 +3,7 @@ using FrontToBack.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System;
 
 namespace FrontToBack.ServicesRegistration
 {
@@ -15,6 +16,12 @@ namespace FrontToBack.ServicesRegistration
             options.UseSqlServer(config.GetConnectionString("DefaultConnection")));
             services.AddScoped<ISum, SumService>();
             services.AddScoped<UserAccount>(s => new UserAccount());
+            services.AddSession(option =>
+            {
+                option.IdleTimeout = TimeSpan.FromMinutes(10);
+            }
+
+            );
 
         }
     }

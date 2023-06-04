@@ -166,3 +166,5 @@ C:\Users\Lenovo\Desktop\FrontToBack\FrontToBack\FrontToBack\obj\Debug\netcoreapp
 C:\Users\Lenovo\Desktop\FrontToBack\FrontToBack\FrontToBack\obj\Debug\netcoreapp3.1\Razor\Views\Product\Search.cshtml.g.cs
 C:\Users\Lenovo\Desktop\FrontToBack\FrontToBack\FrontToBack\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_SearchPartial.cshtml.g.cs
 C:\Users\Lenovo\Desktop\FrontToBack\FrontToBack\FrontToBack\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\Product\Default.cshtml.g.cs
+C:\Users\Lenovo\Desktop\FrontToBack\FrontToBack\FrontToBack\obj\Debug\netcoreapp3.1\Razor\Views\Basket\AddToBasket.cshtml.g.cs
+C:\Users\Lenovo\Desktop\FrontToBack\FrontToBack\FrontToBack\obj\Debug\netcoreapp3.1\Razor\Views\Basket\ShowBasket.cshtml.g.cs

@@ -41,6 +41,7 @@ namespace FrontToBack
 
             app.UseRouting();
             app.UseStaticFiles();
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {

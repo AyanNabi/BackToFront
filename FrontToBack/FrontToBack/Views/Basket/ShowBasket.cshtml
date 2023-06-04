@@ -1,0 +1,33 @@
+﻿@model  List<BasketVM>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Image/th>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">ProductCount</th>
+            <th scope="col">Settings</th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in @Model)
+       {
+            <tr>
+                <th scope="row" >
+                    <img width="150" height="150" src="~/img/@item.ProductImage" />
+                </th>
+                <td>@item.Name</td>
+                <td>@item.Price</td>
+                <td>@item.ProductCount</td>
+                <td>X</td>
+
+            </tr>
+
+        }
+      
+    </tbody>
+</table>
