@@ -32,15 +32,19 @@ namespace FrontToBack.Controllers
             //return Content("Set olundu");
 
             if (id == null) return NotFound();
+            
             var product = _appDbContext.Products
                 .Include(p => p.ProductImages)
                 .FirstOrDefault(p=>p.Id==id);
+
             //.Include(p=>p.ProductImages)
             //.ToList();
+
             var basket = Request.Cookies["Basket"];
             if (product == null) return NotFound();
 
             List<BasketVM> products;
+
             if (basket == null)
             {
                 products = new List<BasketVM>();
@@ -54,16 +58,7 @@ namespace FrontToBack.Controllers
             var existproduct = products.Find(p => p.Id == product.Id);
             if (existproduct == null)
             {
-                BasketVM basketvm = new BasketVM
-                {
-                    Id = product.Id,
-                    Name = product.Name,
-                    Price = product.Price,
-                    ProductCount = 1,
-                    ProductImage = product.ProductImages.FirstOrDefault().ImageUrl
-                };
-
-                products.Add(basketvm);
+                products.Add(AddBasketVM(product));
             }
             else
             {
@@ -78,13 +73,12 @@ namespace FrontToBack.Controllers
                 MaxAge = System.TimeSpan.FromMinutes(10)
             });
 
-           
 
 
+            return RedirectToAction("Index","Home");
 
-            return Content("Set oldu");
+         
         }
-
 
         public IActionResult ShowBasket()
         {
@@ -96,16 +90,31 @@ namespace FrontToBack.Controllers
 
                 products= new List<BasketVM>();
             }
-            else
-            { 
-
-
-
-            }
-        
             return View(products);
 
         }
+      
+
+
+        public BasketVM AddBasketVM(Product product)
+        {
+            BasketVM basketvm = new BasketVM
+            {
+                Id = product.Id,
+                Name = product.Name,
+                Price = product.Price,
+                ProductCount = 1,
+                ProductImage = product.ProductImages.FirstOrDefault().ImageUrl
+            };
+            return basketvm;
+
+
+        }
+
+
+
+
+
 
 
 
