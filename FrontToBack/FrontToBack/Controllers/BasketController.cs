@@ -66,13 +66,7 @@ namespace FrontToBack.Controllers
 
             }
 
-
-            var result = JsonConvert.SerializeObject(products);
-            Response.Cookies.Append("Basket", result, new CookieOptions()
-            {
-                MaxAge = System.TimeSpan.FromMinutes(10)
-            });
-
+            AppendToCookieStorage("Basket", 10, products);
 
 
             return RedirectToAction("Index","Home");
@@ -111,6 +105,29 @@ namespace FrontToBack.Controllers
 
         }
 
+        public void AppendToCookieStorage(string cookieName, int minute, List<BasketVM> products)
+        {
+            var result = JsonConvert.SerializeObject(products);
+
+            Response.Cookies.Append(cookieName, result, new CookieOptions()
+            {
+                MaxAge = System.TimeSpan.FromMinutes(minute)
+            });
+        }
+
+        public IActionResult RemoveProduct(int id)
+        {
+            var result = Request.Cookies["Basket"];
+            var products = JsonConvert.DeserializeObject<List<BasketVM>>(result);
+
+            products.RemoveAll(p=>p.Id==id);
+
+            AppendToCookieStorage("Basket", 10,products);
+
+            return RedirectToAction("ShowBasket", "Basket");
+
+
+        }
 
 
 
@@ -120,3 +137,5 @@ namespace FrontToBack.Controllers
 
     }
 }
+
+
