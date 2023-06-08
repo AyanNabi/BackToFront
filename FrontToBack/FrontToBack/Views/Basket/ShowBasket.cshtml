@@ -22,9 +22,14 @@
                 </th>
                 <td>@item.Name</td>
                 <td>@item.Price</td>
-                <td> + @item.ProductCount - </td>
+                <td>
+                    <a asp-controller="Basket" asp-action="AddProduct" asp-route-id="@item.Id"><i class="fa-solid fa-plus me-3"></i> </a>
+                    @item.ProductCount
+                    <a asp-controller="Basket" asp-action="DecreaseProduct" asp-route-id="@item.Id"><i class="fa-solid fa-minus me-3"></i> </a>
 
-                <td><a asp-controller="basket" asp-action="RemoveProduct" asp-route-id="@item.Id"> X</a></td>
+                </td>
+
+                <td><a asp-controller="Basket" asp-action="RemoveProduct" asp-route-id="@item.Id"> X</a></td>
 
             </tr>
 

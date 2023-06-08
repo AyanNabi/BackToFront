@@ -3,6 +3,7 @@ using FrontToBack.Models;
 using FrontToBack.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.Options;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using System;
@@ -19,6 +20,27 @@ namespace FrontToBack.Controllers
         {
             _appDbContext = appDbContext;
         }
+
+        public IActionResult RemoveProduct(int? id)
+        {
+            DecreaseOrIncreaseProduct("remove", id);
+            return RedirectToAction("ShowBasket", "Basket");
+        }
+
+
+        public IActionResult DecreaseProduct(int? id)
+        {
+            DecreaseOrIncreaseProduct("decrease", id);
+            return RedirectToAction("ShowBasket", "Basket");
+        }
+
+
+        public IActionResult AddProduct(int? id)
+        {
+            DecreaseOrIncreaseProduct("add", id);
+            return RedirectToAction("ShowBasket", "Basket");
+        }
+
 
         public IActionResult AddToBasket(int?id)
         {
@@ -40,20 +62,8 @@ namespace FrontToBack.Controllers
             //.Include(p=>p.ProductImages)
             //.ToList();
 
-            var basket = Request.Cookies["Basket"];
             if (product == null) return NotFound();
-
-            List<BasketVM> products;
-
-            if (basket == null)
-            {
-                products = new List<BasketVM>();
-            }
-            else
-            {
-
-                products = JsonConvert.DeserializeObject<List<BasketVM>>(basket);
-            }
+            var products = GetProductList("Basket");
 
             var existproduct = products.Find(p => p.Id == product.Id);
             if (existproduct == null)
@@ -62,7 +72,7 @@ namespace FrontToBack.Controllers
             }
             else
             {
-                existproduct.ProductCount++;
+                AddProduct(existproduct.Id);
 
             }
 
@@ -115,25 +125,60 @@ namespace FrontToBack.Controllers
             });
         }
 
-        public IActionResult RemoveProduct(int id)
+      
+
+
+        public List<BasketVM> GetProductList(string cookieName)
         {
-            var result = Request.Cookies["Basket"];
-            var products = JsonConvert.DeserializeObject<List<BasketVM>>(result);
 
-            products.RemoveAll(p=>p.Id==id);
+            var basket = Request.Cookies[cookieName];
+            List<BasketVM> products;
 
-            AppendToCookieStorage("Basket", 10,products);
+            if (basket == null)
+            {
+                products = new List<BasketVM>();
+            }
+            else
+            {
 
-            return RedirectToAction("ShowBasket", "Basket");
+                products = JsonConvert.DeserializeObject<List<BasketVM>>(basket);
+            }
 
+            return products;
 
         }
 
+        public void DecreaseOrIncreaseProduct(string option, int?id)
+        {
+                List<BasketVM> products = GetProductList("Basket");
+                var exist = products.Find(p => p.Id == id);
 
 
+            if (option == "add")
+            {
+                exist.ProductCount++;
 
+                AppendToCookieStorage("Basket", 10, products);
 
+            }
+            else if(option=="decrease")
+            {
+                if (exist.ProductCount == 1)
+                {
+                    products.Remove(exist);
+                }
+                else
+                {
+                    exist.ProductCount--;
+                }
 
+            }
+            else if (option=="remove")
+            {
+                products.Remove(exist);
+            }
+            AppendToCookieStorage("Basket", 10, products);
+        }
 
     }
 }
