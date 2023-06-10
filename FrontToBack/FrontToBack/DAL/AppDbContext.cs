@@ -1,7 +1,6 @@
 ﻿using FrontToBack.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
-
 namespace FrontToBack.DAL
 {
     public class AppDbContext : DbContext

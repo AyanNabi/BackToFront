@@ -21,6 +21,115 @@ namespace FrontToBack.Controllers
             _appDbContext = appDbContext;
         }
 
+        public IActionResult AddToBasket(int?id)
+        {
+            //HttpContext.Session.SetString("P515", "15");
+
+            //return View(HttpContext.Session.GetString("p515"));
+            ////Response.Cookies.Append("p515", "15", new CookieOptions()
+            ////{
+            ////    MaxAge = System.TimeSpan.FromMinutes(10)
+            ////});
+            //return Content("Set olundu");
+
+            if (id == null) return NotFound();
+            
+            var product = _appDbContext.Products
+                .Include(p => p.ProductImages)
+                .FirstOrDefault(p=>p.Id==id);
+
+            //.Include(p=>p.ProductImages)
+            //.ToList();
+
+            var basket = Request.Cookies["Basket"];
+            if (product == null) return NotFound();
+
+            List<BasketVM> products;
+
+            if (basket == null)
+            {
+                products = new List<BasketVM>();
+            }
+            else
+            {
+
+                products = JsonConvert.DeserializeObject<List<BasketVM>>(basket);
+            }
+
+            var existproduct = products.Find(p => p.Id == product.Id);
+            if (existproduct == null)
+            {
+                products.Add(AddBasketVM(product));
+            }
+            else
+            {
+                existproduct.ProductCount++;
+
+            }
+
+            AppendToCookieStorage("Basket", 10, products);
+
+
+            return RedirectToAction("Index","Home");
+
+         
+        }
+
+        public IActionResult ShowBasket()
+        {
+            //string result= Request.Cookies["p515"];
+            var basket = Request.Cookies["Basket"];
+            List<BasketVM> products;
+            if (basket == null)
+            {
+                products = new List<BasketVM>();
+            }
+            else
+            {
+
+                products = JsonConvert.DeserializeObject<List<BasketVM>>(basket);
+                foreach (var item in products)
+                {
+                    Product exist = _appDbContext.Products
+                        .Include(p=>p.ProductImages)
+                        .FirstOrDefault(p => p.Id == item.Id);
+                    if (exist!=null)
+                    {
+                        item.Name = exist.Name;
+                        item.Price= exist.Price;
+                        item.ProductImage = exist.ProductImages.FirstOrDefault().ImageUrl;
+                        
+                    }
+                }
+            }
+            return View(products);
+
+        }
+      
+
+
+        public BasketVM AddBasketVM(Product product)
+        {
+            BasketVM basketvm = new BasketVM
+            {
+                Id = product.Id,
+                ProductCount = 1,
+            };
+            return basketvm;
+
+
+        }
+
+        public void AppendToCookieStorage(string cookieName, int minute, List<BasketVM> products)
+        {
+            var result = JsonConvert.SerializeObject(products);
+
+            Response.Cookies.Append(cookieName, result, new CookieOptions()
+            {
+                MaxAge = System.TimeSpan.FromMinutes(minute)
+            });
+        }
+
         public IActionResult RemoveProduct(int? id)
         {
             DecreaseOrIncreaseProduct("remove", id);
@@ -42,98 +151,10 @@ namespace FrontToBack.Controllers
         }
 
 
-        public IActionResult AddToBasket(int?id)
-        {
-            //HttpContext.Session.SetString("P515", "15");
-
-            //return View(HttpContext.Session.GetString("p515"));
-            ////Response.Cookies.Append("p515", "15", new CookieOptions()
-            ////{
-            ////    MaxAge = System.TimeSpan.FromMinutes(10)
-            ////});
-            //return Content("Set olundu");
-
-            if (id == null) return NotFound();
-            
-            var product = _appDbContext.Products
-                .Include(p => p.ProductImages)
-                .FirstOrDefault(p=>p.Id==id);
-
-            //.Include(p=>p.ProductImages)
-            //.ToList();
-
-            if (product == null) return NotFound();
-            var products = GetProductList("Basket");
-
-            var existproduct = products.Find(p => p.Id == product.Id);
-            if (existproduct == null)
-            {
-                products.Add(AddBasketVM(product));
-            }
-            else
-            {
-                AddProduct(existproduct.Id);
-
-            }
-
-            AppendToCookieStorage("Basket", 10, products);
-
-
-            return RedirectToAction("Index","Home");
-
-         
-        }
-
-        public IActionResult ShowBasket()
-        {
-            //string result= Request.Cookies["p515"];
-            var result = Request.Cookies["Basket"];
-            var products = JsonConvert.DeserializeObject<List<BasketVM>>(result);
-            if (result==null)
-            {
-
-                products= new List<BasketVM>();
-            }
-            return View(products);
-
-        }
-      
-
-
-        public BasketVM AddBasketVM(Product product)
-        {
-            BasketVM basketvm = new BasketVM
-            {
-                Id = product.Id,
-                Name = product.Name,
-                Price = product.Price,
-                ProductCount = 1,
-                ProductImage = product.ProductImages.FirstOrDefault().ImageUrl
-            };
-            return basketvm;
-
-
-        }
-
-        public void AppendToCookieStorage(string cookieName, int minute, List<BasketVM> products)
-        {
-            var result = JsonConvert.SerializeObject(products);
-
-            Response.Cookies.Append(cookieName, result, new CookieOptions()
-            {
-                MaxAge = System.TimeSpan.FromMinutes(minute)
-            });
-        }
-
-      
-
-
         public List<BasketVM> GetProductList(string cookieName)
         {
-
             var basket = Request.Cookies[cookieName];
             List<BasketVM> products;
-
             if (basket == null)
             {
                 products = new List<BasketVM>();
@@ -143,7 +164,6 @@ namespace FrontToBack.Controllers
 
                 products = JsonConvert.DeserializeObject<List<BasketVM>>(basket);
             }
-
             return products;
 
         }
@@ -179,6 +199,8 @@ namespace FrontToBack.Controllers
             }
             AppendToCookieStorage("Basket", 10, products);
         }
+
+
 
     }
 }

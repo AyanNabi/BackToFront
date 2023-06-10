@@ -170,4 +170,11 @@ C:\Users\Lenovo\Desktop\FrontToBack\FrontToBack\FrontToBack\obj\Debug\netcoreapp
 C:\Users\Lenovo\Desktop\FrontToBack\FrontToBack\FrontToBack\obj\Debug\netcoreapp3.1\Razor\Views\Basket\ShowBasket.cshtml.g.cs
 C:\Users\Lenovo\Desktop\FrontToBack\FrontToBack\FrontToBack\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\_ViewStart.cshtml.g.cs
 C:\Users\Lenovo\Desktop\FrontToBack\FrontToBack\FrontToBack\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\_ViewImports.cshtml.g.cs
-C:\Users\Lenovo\Desktop\FrontToBack\FrontToBack\FrontToBack\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\Shared\_Layout.cshtml.g.cs
+C:\Users\Lenovo\Desktop\FrontToBack\FrontToBack\FrontToBack\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\Dashboard\Index.cshtml.g.cs
+C:\Users\Lenovo\Desktop\FrontToBack\FrontToBack\FrontToBack\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\Shared\_AdminLayout.cshtml.g.cs
+C:\Users\Lenovo\Desktop\FrontToBack\FrontToBack\FrontToBack\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\Category\Index.cshtml.g.cs
+C:\Users\Lenovo\Desktop\FrontToBack\FrontToBack\FrontToBack\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\Category\Detail.cshtml.g.cs
+C:\Users\Lenovo\Desktop\FrontToBack\FrontToBack\FrontToBack\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\Category\Create.cshtml.g.cs
+C:\Users\Lenovo\Desktop\FrontToBack\FrontToBack\FrontToBack\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\Shared\_ValidationPartial.cshtml.g.cs
+C:\Users\Lenovo\Desktop\FrontToBack\FrontToBack\FrontToBack\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\Category\Update.cshtml.g.cs
+C:\Users\Lenovo\Desktop\FrontToBack\FrontToBack\FrontToBack\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\Slider\Index.cshtml.g.cs

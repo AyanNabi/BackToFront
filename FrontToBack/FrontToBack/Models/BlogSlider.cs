@@ -1,4 +1,7 @@
-﻿namespace FrontToBack.Models
+﻿using Microsoft.AspNetCore.Http;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace FrontToBack.Models
 {
     public class BlogSlider
     {
@@ -7,6 +10,8 @@
         public string Content { get; set; }
         public string Author { get; set; }
         public string Profession { get; set; }
+        [NotMapped ]
+        public IFormFile Photo { get; set; }
 
     }
 }
