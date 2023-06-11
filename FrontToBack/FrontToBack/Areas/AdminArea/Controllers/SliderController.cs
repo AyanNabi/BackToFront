@@ -11,6 +11,7 @@ using System.Linq;
 
 namespace FrontToBack.Areas.AdminArea.Controllers
 {
+    [Area("AdminArea")]
     public class SliderController : Controller
 
     {
@@ -30,13 +31,14 @@ namespace FrontToBack.Areas.AdminArea.Controllers
         public IActionResult Delete(int?id )
         {
             SliderCreateVM slider = new SliderCreateVM();
-            string path = Path.Combine(_webenvironment.WebRootPath, "img", slider.Photo);
+            string path = Path.Combine(_webenvironment.WebRootPath, "img", slider.Photo.FileName);
             if (System.IO.File.Exists(""))
             {
                 System.IO.File.Delete(path);
             }
             return View();
         }
+
         [HttpPost]
         [AutoValidateAntiforgeryToken]
         public IActionResult Create( SliderCreateVM sliderCreateVM)
@@ -63,12 +65,17 @@ namespace FrontToBack.Areas.AdminArea.Controllers
                 return View();
 
             }
+            SliderImage sliderImage = new SliderImage();
+            sliderImage.ImageUrl = "";
+            _appDbContext.SliderImages.Add(sliderImage);
+            _appDbContext.SaveChanges();
+
+
 
             var filename = Guid.NewGuid() + sliderCreateVM.Photo.FileName;
-            var path = Path.Combine(_webenvironment.WebRootPath, "img", filename);
-            //_webenvironment.WebRootPath + "img" + sliderCreateVM.Photo.FileName;
+            var path = Path.Combine(_webenvironment.WebRootPath + "img" + sliderCreateVM.Photo.FileName);
             BlogSlider slider = new BlogSlider();
-            slider.Photo = filename;
+            //slider.Photo = filename;
             _appDbContext.BlogSliders.Add(slider);
             _appDbContext.SaveChanges();
 
@@ -79,6 +86,14 @@ namespace FrontToBack.Areas.AdminArea.Controllers
 
 
             return RedirectToAction("Index");
+        }
+
+ 
+        
+
+        public IActionResult Update()
+        {
+            return View();
         }
     }
 }

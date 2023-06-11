@@ -10,7 +10,7 @@
             <div class="card-body">
                 <h4 class="card-title">Create Category</h4>
               
-                <form method="post" action="test"  class="forms-sample">
+                <form method="post" action="Create"  class="forms-sample">
                     <div class="form-group">
                         <label asp-for="Name" >Name</label>
                         <input asp-for="Name" class="form-control"  placeholder="Name">
@@ -24,8 +24,8 @@
                     </div>
                    
                    
-                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
-                    <a asp-controlle="category" asp-action="index" class="btn btn-light">Cancel</a>
+                    <button  type="submit" class="btn btn-primary mr-2">Submit</button>
+                    <a asp-controller="category" asp-action="index" class="btn btn-light">Cancel</a>
                 </form>
             </div>
         </div>
@@ -33,7 +33,6 @@
     </div>
 
 
-                        @section Scripts{
     <partial name="_ValidationPartial"></partial>
 
-                        }
+                        

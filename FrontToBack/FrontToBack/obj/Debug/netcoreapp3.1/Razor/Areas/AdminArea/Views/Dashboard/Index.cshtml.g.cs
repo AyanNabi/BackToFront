@@ -19,8 +19,29 @@ using FrontToBack.Models;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 2 "C:\Users\Lenovo\Desktop\FrontToBack\FrontToBack\FrontToBack\Areas\AdminArea\Views\_ViewImports.cshtml"
+using FrontToBack.ViewModels.AdminVM.Category;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 3 "C:\Users\Lenovo\Desktop\FrontToBack\FrontToBack\FrontToBack\Areas\AdminArea\Views\_ViewImports.cshtml"
+using FrontToBack.ViewModels.AdminVM.Slider;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 4 "C:\Users\Lenovo\Desktop\FrontToBack\FrontToBack\FrontToBack\Areas\AdminArea\Views\_ViewImports.cshtml"
+using FrontToBack.ViewModels.AdminVM.Product;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"6ea566161f469a094507dbf534a60b47984271eb", @"/Areas/AdminArea/Views/Dashboard/Index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"c657e1a0d2b8239b6012413371eb6073501f96b0", @"/Areas/AdminArea/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"7955fd9fd505c1d112d0d443823b9433c1c17fef", @"/Areas/AdminArea/Views/_ViewImports.cshtml")]
     #nullable restore
     public class Areas_AdminArea_Views_Dashboard_Index : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     #nullable disable

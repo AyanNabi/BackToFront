@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace FrontToBack.ViewModels.AdminVM.Category
 {
-    public class UpdateCategoryVM
+    public class CategoryUpdateVM
     {
         [Required]
         [StringLength(50)]

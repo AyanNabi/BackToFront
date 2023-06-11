@@ -1,4 +1,4 @@
-﻿namespace FrontToBack.Models
+﻿ namespace FrontToBack.Models
 {
     public class SliderContent
     {

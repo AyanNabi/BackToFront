@@ -4,6 +4,7 @@ using FrontToBack.ViewModels.AdminVM.Category;
 using FrontToBack.ViewModels.AdminVM.Category;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
+
 using System.Runtime.InteropServices.WindowsRuntime; 
 
 namespace FrontToBack.Areas.AdminArea.Controllers
@@ -20,7 +21,8 @@ namespace FrontToBack.Areas.AdminArea.Controllers
         public IActionResult Index()
         {
 
-            var categories=_appDbContext.Categories.ToList();
+            var categories = _appDbContext.Categories.Where(c => c.IsDeleted == false).ToList();
+
             return View(categories);
         }
 
@@ -38,10 +40,11 @@ namespace FrontToBack.Areas.AdminArea.Controllers
             if (id == null) return NotFound();
             var category = _appDbContext.Categories.FirstOrDefault(c => c.Id == id);
             if (category == null) return NotFound();
-            _appDbContext.Categories.Where(c=>c.IsDeleted==true);
+            //_appDbContext.Categories.Where(c=>c.IsDeleted==false).ToList();
+            //_appDbContext.Categories.Remove(category);
+            category.IsDeleted = true;
             _appDbContext.SaveChanges();
-
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index");
         }
 
         public IActionResult Create(int?id)
@@ -85,7 +88,7 @@ namespace FrontToBack.Areas.AdminArea.Controllers
             var category = _appDbContext.Categories.FirstOrDefault(c => c.Id == id);
             if (category == null) return NotFound();
            
-            return View( new UpdateCategoryVM()
+            return View( new CategoryUpdateVM()
             {
                 Name= category.Name,    
                 Desc= category.Desc,    
@@ -95,7 +98,7 @@ namespace FrontToBack.Areas.AdminArea.Controllers
 
         [HttpPost]
         [AutoValidateAntiforgeryToken]// qiraqdan sorgulara cavab vermir inputun valuesi=undan istifade edir
-        public IActionResult Update(int? id, UpdateCategoryVM categoryupdate)
+        public IActionResult Update(int? id, CategoryUpdateVM categoryupdate)
         {
             if (!ModelState.IsValid)
             {
@@ -113,17 +116,11 @@ namespace FrontToBack.Areas.AdminArea.Controllers
             var category = _appDbContext.Categories.FirstOrDefault(c => c.Id == id);
             if (category == null) return NotFound();
           
-            return View();
+            return RedirectToAction();
 
         }
 
       
-
-
-
-
-
-
 
         }
 }
