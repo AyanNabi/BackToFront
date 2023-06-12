@@ -47,38 +47,41 @@ namespace FrontToBack.Areas.AdminArea.Controllers
             return RedirectToAction("Index");
         }
 
-        public IActionResult Create(int?id)
+        public IActionResult Create()
         {
 
             return View();
         }
 
-            [HttpPost]
-        [AutoValidateAntiforgeryToken]// qiraqdan sorgulara cavab vermir inputun valuesi=undan istifade edir
-        public IActionResult Create(CreateCategoryVM category)
+        [HttpPost]
+        //[AutoValidateAntiforgeryToken]// qiraqdan sorgulara cavab vermir inputun valuesi=undan istifade edir
+        public IActionResult Create(CreateCategoryVM categoryvm)
         {
             if (!ModelState.IsValid)
             {
-                return View();
+                //modellin proplarinin ustune yazdigim data notationlari yoxlayir
+                return Content("model state proplem");
             }
-            var exist= _appDbContext.Categories.Any(c=>c.Name.ToLower()==category.Name.ToLower());
+            var exist = _appDbContext.Categories.Any(c => c.Name.ToLower() == categoryvm.Name.ToLower());
             if (exist)
             {
                 ModelState.AddModelError("Name", "Bu adli category movcuddur");
+                return Content("same category");
+
 
             }
             Category c = new Category()
             {
-                Name= category.Name,    
-                Desc=category.Desc, 
+                Name = categoryvm.Name,
+                Desc = categoryvm.Desc,
 
             };
 
             _appDbContext.Categories.Add(c);
             _appDbContext.SaveChanges();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Create");
 
-            
+
         }
 
        
@@ -116,7 +119,7 @@ namespace FrontToBack.Areas.AdminArea.Controllers
             var category = _appDbContext.Categories.FirstOrDefault(c => c.Id == id);
             if (category == null) return NotFound();
           
-            return RedirectToAction();
+            return RedirectToAction("Update");
 
         }
 
