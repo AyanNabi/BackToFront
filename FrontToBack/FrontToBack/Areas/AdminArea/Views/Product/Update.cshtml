@@ -1,16 +1,17 @@
-﻿@model CreateProductVM
+﻿@model UpdateProductVM
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Update";
     Layout = "~/Areas/AdminArea/Views/Shared/_AdminLayout.cshtml";
 }
+
 
 <div class="row">
     <div class="col-md-6 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Create Category</h4>
+                <h4 class="card-title">Update Product</h4>
 
-                <form method="post" action="Create" class="forms-sample" enctype="multipart/form-data">
+                <form method="post" action="update" class="forms-sample" enctype="multipart/form-data">
                     <div class="form-group">
                         <label asp-for="Name">Name</label>
                         <input asp-for="Name" class="form-control" placeholder="Name">
@@ -22,7 +23,7 @@
                         <span class="text-danger" asp-validation-for="Price"></span>
 
                     </div>
-                    <div class="form-group">
+                     <div class="form-group">
                         <label asp-for="Count">Count</label>
                         <input asp-for="Count" class="form-control" placeholder="Count">
                         <span class="text-danger" asp-validation-for="Count"></span>
@@ -37,13 +38,13 @@
                     <div class="form-group">
                         <select asp-for="CategoryId" class="form-select" asp-items="@ViewBag.Categories" aria-label="Default select example">
                             <option selected>Open this select menu</option>
-                          
+
                         </select>
-                    </div> 
+                    </div>
 
 
-                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
-                    <a asp-controller="category" asp-action="index" class="btn btn-light">Cancel</a>
+                    <button asp-controller="product" asp-action="index" type="submit" class="btn btn-primary mr-2">Submit</button>
+                    <a asp-controlle="category" asp-action="index" class="btn btn-light">Cancel</a>
                 </form>
             </div>
         </div>
@@ -52,5 +53,7 @@
 
 
 <partial name="_ValidationPartial"></partial>
+
+
 
 

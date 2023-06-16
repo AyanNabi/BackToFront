@@ -10,6 +10,14 @@ namespace FrontToBack.Models
         public int CategoryId { get; set; }
         public int Count { get; set; }
         public Category category { get; set; }
+
+        public bool IsDeleted { get; set; } = false;
+
         public List<ProductImage> ProductImages { get; set; }
+
+        public Product()
+        {
+            ProductImages= new List<ProductImage>();    
+        }
     }
 }

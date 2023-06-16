@@ -1,11 +1,9 @@
-﻿using FrontToBack.Models;
-using Microsoft.AspNetCore.Http;
-using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Http;
 using System.ComponentModel.DataAnnotations;
 
 namespace FrontToBack.ViewModels.AdminVM.Product
 {
-    public class CreateProductVM
+    public class UpdateProductVM
     {
         [Required, StringLength(100)]
         public string Name { get; set; }
@@ -14,7 +12,8 @@ namespace FrontToBack.ViewModels.AdminVM.Product
 
         public int CategoryId { get; set; }
         public int Count { get; set; }
-        [Required, ]
+
+        [Required]
         public IFormFile[] Photos { get; set; }
 
       
