@@ -40,8 +40,22 @@ using FrontToBack.ViewModels.AdminVM.Product;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 5 "C:\Users\Lenovo\Desktop\FrontToBack\FrontToBack\FrontToBack\Areas\AdminArea\Views\_ViewImports.cshtml"
+using FrontToBack.ViewModels.AdminVM.Book;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 6 "C:\Users\Lenovo\Desktop\FrontToBack\FrontToBack\FrontToBack\Areas\AdminArea\Views\_ViewImports.cshtml"
+using FrontToBack.Models.Practice;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"67bdb0f7c5d0f8e3f402aca8f02722f16b00e2d2", @"/Areas/AdminArea/Views/Category/Index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"712ef229f05f9307e6630dff4933e959ac9b1e38", @"/Areas/AdminArea/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"1f3e3bda710d60848e0a29f9032d099fe2ea1e8d", @"/Areas/AdminArea/Views/_ViewImports.cshtml")]
     #nullable restore
     public class Areas_AdminArea_Views_Category_Index : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<List<Category>>
     #nullable disable
@@ -90,7 +104,7 @@ using FrontToBack.ViewModels.AdminVM.Product;
 #line hidden
 #nullable disable
             WriteLiteral("\r\n  <div class=\"row\">\r\n            <div class=\"col-lg-12 grid-margin stretch-card\">\r\n              <div class=\"card\">\r\n                <div class=\"card-body\">\r\n                  <h4 class=\"card-title\">Category Table</h4>\r\n                ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "67bdb0f7c5d0f8e3f402aca8f02722f16b00e2d27230", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "67bdb0f7c5d0f8e3f402aca8f02722f16b00e2d27674", async() => {
                 WriteLiteral("Add Category");
             }
             );
@@ -148,7 +162,7 @@ using FrontToBack.ViewModels.AdminVM.Product;
 #line hidden
 #nullable disable
             WriteLiteral("</td>\r\n                                    <td>\r\n                                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "67bdb0f7c5d0f8e3f402aca8f02722f16b00e2d210154", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "67bdb0f7c5d0f8e3f402aca8f02722f16b00e2d210598", async() => {
                 WriteLiteral("\r\n                                            <i class=\"mdi mdi-delete\"></i>\r\n                                        ");
             }
             );
@@ -182,7 +196,7 @@ using FrontToBack.ViewModels.AdminVM.Product;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "67bdb0f7c5d0f8e3f402aca8f02722f16b00e2d212850", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "67bdb0f7c5d0f8e3f402aca8f02722f16b00e2d213294", async() => {
                 WriteLiteral("\r\n                                            <i class=\"mdi mdi-table-edit\"></i>\r\n                                        ");
             }
             );
@@ -216,7 +230,7 @@ using FrontToBack.ViewModels.AdminVM.Product;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "67bdb0f7c5d0f8e3f402aca8f02722f16b00e2d215551", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "67bdb0f7c5d0f8e3f402aca8f02722f16b00e2d215995", async() => {
                 WriteLiteral("\r\n                                            <i class=\"mdi mdi-account-card-details\"></i>\r\n                                        ");
             }
             );

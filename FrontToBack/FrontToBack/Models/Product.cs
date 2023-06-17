@@ -11,7 +11,7 @@ namespace FrontToBack.Models
         public int Count { get; set; }
         public Category category { get; set; }
 
-        public bool IsDeleted { get; set; } = false;
+        public bool IsDeleted { get; set; }
 
         public List<ProductImage> ProductImages { get; set; }
 

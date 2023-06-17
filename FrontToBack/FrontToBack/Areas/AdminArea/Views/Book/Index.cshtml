@@ -1,0 +1,21 @@
+﻿@model List<Book>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/AdminArea/Views/Shared/_AdminLayout.cshtml";
+}
+
+@foreach (var book in Model)
+{
+    <div class="border">
+        <p>@book.Name</p>
+        @foreach (var item in book.BookGenres)
+        {
+            <div class="d-flex">
+                <p class="">@item.Genre.Name</p>
+            </div>
+          
+        }
+    </div>
+   
+}
+

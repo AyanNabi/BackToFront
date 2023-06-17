@@ -23,7 +23,7 @@ namespace FrontToBack.Helper
         {
             
                   var filename = Guid.NewGuid() + file.FileName;
-            var path = Path.Combine(webHostEnvironment.WebRootPath + foldername + filename);
+            var path = Path.Combine(webHostEnvironment.WebRootPath, foldername, filename);
 
             using (FileStream stream = new FileStream(path, FileMode.CreateNew))
             {

@@ -62,7 +62,7 @@ namespace FrontToBack.Areas.AdminArea.Controllers
                 }
                
                 ProductImage image = new ProductImage();
-                if (item == createProductVM.Photos[0])
+                if (item == createProductVM.Photos.FirstOrDefault())
                 {
                     image.IsMainImage = true;
 
@@ -88,7 +88,8 @@ namespace FrontToBack.Areas.AdminArea.Controllers
         public IActionResult Delete(int? id)
         {
             if (id == null) return NotFound();
-            var product = _appDbContext.Products.FirstOrDefault(c => c.Id == id);
+            var product = _appDbContext.Products
+                 .Include(p => p.ProductImages).FirstOrDefault(c => c.Id == id);
             if (product == null) return NotFound();
             product.IsDeleted = true;
             _appDbContext.SaveChanges();
@@ -105,16 +106,17 @@ namespace FrontToBack.Areas.AdminArea.Controllers
             ViewBag.Categories = new SelectList(_appDbContext.Categories.ToList(), "Id", "Name");
 
             if (id == null) return NotFound();
-            var product = _appDbContext.Products.FirstOrDefault(c => c.Id == id);
+            var product = _appDbContext.Products.Include(p => p.ProductImages).FirstOrDefault(c => c.Id == id);
             if (product == null) return NotFound();
 
             return View(new UpdateProductVM()
             {
-               Name = product.Name,
-                Price=product.Price,
-                Count= product.Count,
-                CategoryId= product.CategoryId
-                     
+                Name = product.Name,
+                Price = product.Price,
+                Count = product.Count,
+                CategoryId = product.CategoryId
+
+
 
 
             });
@@ -139,7 +141,11 @@ namespace FrontToBack.Areas.AdminArea.Controllers
             }
             if (id == null) return NotFound();
             var dbproduct = _appDbContext.Products.FirstOrDefault(c => c.Id == id);
+
             if (dbproduct == null) return NotFound();
+            //if (dbproduct != null) return RedirectToAction("Delete");
+
+
             dbproduct.Price = updateProduct.Price;
             dbproduct.Count = updateProduct.Count;
             dbproduct.CategoryId = updateProduct.CategoryId;
@@ -150,5 +156,35 @@ namespace FrontToBack.Areas.AdminArea.Controllers
 
         }
 
-    }
+
+        public IActionResult Detail(int? id)
+        {
+            if (id == null) return NotFound();
+            var product = _appDbContext.Products
+                .Include(c => c.ProductImages)
+                .FirstOrDefault(c => c.Id == id);
+            if (product == null) return NotFound();
+            return View(product);
+        }
+
+
+
+        public IActionResult RemoveImage(int? id)
+        {
+
+            if (id == null) return NotFound();
+            var image = _appDbContext.ProductImages
+                .FirstOrDefault(c => c.Id == id);
+            if (image == null) return NotFound();
+            _appDbContext.ProductImages.Remove(image);
+            _appDbContext.SaveChanges();
+            return RedirectToAction(nameof(Index));
+
+
+        }
+
+
+
+
+        }
 }

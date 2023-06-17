@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FrontToBack.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230616165514_AddDeletedProp")]
-    partial class AddDeletedProp
+    [Migration("20230617052855_BpokGenreAdded")]
+    partial class BpokGenreAdded
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -163,6 +163,58 @@ namespace FrontToBack.Migrations
                     b.ToTable("InstagramImagesSlider");
                 });
 
+            modelBuilder.Entity("FrontToBack.Models.Practice.Book", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Books");
+                });
+
+            modelBuilder.Entity("FrontToBack.Models.Practice.BookGenre", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("BookId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("GenreId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BookId");
+
+                    b.HasIndex("GenreId");
+
+                    b.ToTable("BookGenres");
+                });
+
+            modelBuilder.Entity("FrontToBack.Models.Practice.Genre", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Genres");
+                });
+
             modelBuilder.Entity("FrontToBack.Models.Product", b =>
                 {
                     b.Property<int>("Id")
@@ -262,6 +314,21 @@ namespace FrontToBack.Migrations
                     b.HasOne("FrontToBack.Models.FlowerExpert", "FlowerExpert")
                         .WithMany("ExpertProfessionFlowerExperts")
                         .HasForeignKey("FlowerExpertId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("FrontToBack.Models.Practice.BookGenre", b =>
+                {
+                    b.HasOne("FrontToBack.Models.Practice.Book", "Book")
+                        .WithMany("BookGenres")
+                        .HasForeignKey("BookId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("FrontToBack.Models.Practice.Genre", "Genre")
+                        .WithMany("BookGenres")
+                        .HasForeignKey("GenreId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

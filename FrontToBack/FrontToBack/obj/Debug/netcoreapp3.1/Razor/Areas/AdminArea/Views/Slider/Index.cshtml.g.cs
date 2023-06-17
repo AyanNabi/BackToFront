@@ -40,8 +40,22 @@ using FrontToBack.ViewModels.AdminVM.Product;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 5 "C:\Users\Lenovo\Desktop\FrontToBack\FrontToBack\FrontToBack\Areas\AdminArea\Views\_ViewImports.cshtml"
+using FrontToBack.ViewModels.AdminVM.Book;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 6 "C:\Users\Lenovo\Desktop\FrontToBack\FrontToBack\FrontToBack\Areas\AdminArea\Views\_ViewImports.cshtml"
+using FrontToBack.Models.Practice;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"5023a919838347d57da1620bdf6a1b1aa99aaa8b", @"/Areas/AdminArea/Views/Slider/Index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"712ef229f05f9307e6630dff4933e959ac9b1e38", @"/Areas/AdminArea/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"1f3e3bda710d60848e0a29f9032d099fe2ea1e8d", @"/Areas/AdminArea/Views/_ViewImports.cshtml")]
     #nullable restore
     public class Areas_AdminArea_Views_Slider_Index : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<List<BlogSlider>>
     #nullable disable
@@ -90,7 +104,7 @@ using FrontToBack.ViewModels.AdminVM.Product;
 #line hidden
 #nullable disable
             WriteLiteral("\r\n<div class=\"row\">\r\n    <div class=\"col-lg-12 grid-margin stretch-card\">\r\n        <div class=\"card\">\r\n            <div class=\"card-body\">\r\n                <h4 class=\"card-title\">Category Table</h4>\r\n                ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5023a919838347d57da1620bdf6a1b1aa99aaa8b7194", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5023a919838347d57da1620bdf6a1b1aa99aaa8b7638", async() => {
                 WriteLiteral("Add Slider");
             }
             );
@@ -142,7 +156,7 @@ WriteAttributeValue("", 1028, item.ImageUrl, 1028, 14, false);
 #nullable disable
             EndWriteAttribute();
             WriteLiteral(" />\r\n                                    </td>\r\n                                    <td>\r\n                                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5023a919838347d57da1620bdf6a1b1aa99aaa8b10030", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5023a919838347d57da1620bdf6a1b1aa99aaa8b10474", async() => {
                 WriteLiteral("\r\n                                            <i class=\"mdi mdi-delete\"></i>\r\n                                        ");
             }
             );
@@ -176,7 +190,7 @@ WriteAttributeValue("", 1028, item.ImageUrl, 1028, 14, false);
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5023a919838347d57da1620bdf6a1b1aa99aaa8b12722", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5023a919838347d57da1620bdf6a1b1aa99aaa8b13166", async() => {
                 WriteLiteral("\r\n                                            <i class=\"mdi mdi-table-edit\"></i>\r\n                                        ");
             }
             );
@@ -210,7 +224,7 @@ WriteAttributeValue("", 1028, item.ImageUrl, 1028, 14, false);
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5023a919838347d57da1620bdf6a1b1aa99aaa8b15419", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5023a919838347d57da1620bdf6a1b1aa99aaa8b15863", async() => {
                 WriteLiteral("\r\n                                            <i class=\"mdi mdi-account-card-details\"></i>\r\n                                        ");
             }
             );

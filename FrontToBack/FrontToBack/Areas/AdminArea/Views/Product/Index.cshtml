@@ -31,7 +31,14 @@
                             {
                                 <tr>
                                     <td>
-                                        @*<img src="~/img/@item.ProductImages.FirstOrDefault(p=>p.IsMainImage).ImageUrl" />*@
+                                        @if (@item.ProductImages.FirstOrDefault()==null)
+                                        {
+                                        <img src="~/img/default.png" />
+                                            
+                                        }else{
+                                            <img src="~/img/@item.ProductImages.FirstOrDefault().ImageUrl" />
+
+                                        }
                                     </td>
                                     <td>@item.Name</td>
                                     <td>@item.Price</td>
