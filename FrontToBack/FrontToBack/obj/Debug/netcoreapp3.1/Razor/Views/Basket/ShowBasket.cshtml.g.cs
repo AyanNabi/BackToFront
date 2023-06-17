@@ -33,8 +33,15 @@ using FrontToBack.ViewModels;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 4 "C:\Users\Lenovo\Desktop\FrontToBack\FrontToBack\FrontToBack\Views\_ViewImports.cshtml"
+using FrontToBack.ViewModels.Account;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"fe8ff09aac09ca599983746fd79369b55f096fa5", @"/Views/Basket/ShowBasket.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"fcbe936c09745827c664c237b86b180ee3154142", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"7d659c7348d4e555fb20961613876c08c8148db9", @"/Views/_ViewImports.cshtml")]
     #nullable restore
     public class Views_Basket_ShowBasket : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<List<BasketVM>>
     #nullable disable
@@ -95,7 +102,7 @@ using FrontToBack.ViewModels;
 #line hidden
 #nullable disable
             WriteLiteral("            <tr>\r\n                <th scope=\"row\" >\r\n                    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "fe8ff09aac09ca599983746fd79369b55f096fa56099", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "fe8ff09aac09ca599983746fd79369b55f096fa56304", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -136,7 +143,7 @@ AddHtmlAttributeValue("", 495, item.ProductImage, 495, 18, false);
 #line hidden
 #nullable disable
             WriteLiteral("</td>\r\n                <td>\r\n                    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "fe8ff09aac09ca599983746fd79369b55f096fa58357", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "fe8ff09aac09ca599983746fd79369b55f096fa58562", async() => {
                 WriteLiteral("<i class=\"fa-solid fa-plus me-3\"></i> ");
             }
             );
@@ -177,7 +184,7 @@ AddHtmlAttributeValue("", 495, item.ProductImage, 495, 18, false);
 #line hidden
 #nullable disable
             WriteLiteral("\r\n                    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "fe8ff09aac09ca599983746fd79369b55f096fa511080", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "fe8ff09aac09ca599983746fd79369b55f096fa511285", async() => {
                 WriteLiteral("<i class=\"fa-solid fa-minus me-3\"></i> ");
             }
             );
@@ -210,7 +217,7 @@ AddHtmlAttributeValue("", 495, item.ProductImage, 495, 18, false);
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n\r\n                </td>\r\n\r\n                <td>");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "fe8ff09aac09ca599983746fd79369b55f096fa513574", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "fe8ff09aac09ca599983746fd79369b55f096fa513779", async() => {
                 WriteLiteral(" X");
             }
             );

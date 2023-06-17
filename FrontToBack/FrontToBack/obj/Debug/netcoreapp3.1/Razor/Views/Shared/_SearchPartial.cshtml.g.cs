@@ -33,8 +33,15 @@ using FrontToBack.ViewModels;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 4 "C:\Users\Lenovo\Desktop\FrontToBack\FrontToBack\FrontToBack\Views\_ViewImports.cshtml"
+using FrontToBack.ViewModels.Account;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"8d1dd575d979398ff4f1862aa5eb5bc611f647c3", @"/Views/Shared/_SearchPartial.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"fcbe936c09745827c664c237b86b180ee3154142", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"7d659c7348d4e555fb20961613876c08c8148db9", @"/Views/_ViewImports.cshtml")]
     #nullable restore
     public class Views_Shared__SearchPartial : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<List<Product>>
     #nullable disable
@@ -73,7 +80,7 @@ using FrontToBack.ViewModels;
 #line hidden
 #nullable disable
             WriteLiteral("    <li>");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8d1dd575d979398ff4f1862aa5eb5bc611f647c34213", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8d1dd575d979398ff4f1862aa5eb5bc611f647c34418", async() => {
 #nullable restore
 #line 3 "C:\Users\Lenovo\Desktop\FrontToBack\FrontToBack\FrontToBack\Views\Shared\_SearchPartial.cshtml"
                                                    Write(item.Name);

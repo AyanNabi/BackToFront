@@ -186,3 +186,6 @@ C:\Users\Lenovo\Desktop\FrontToBack\FrontToBack\FrontToBack\obj\Debug\netcoreapp
 C:\Users\Lenovo\Desktop\FrontToBack\FrontToBack\FrontToBack\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\Product\Detail.cshtml.g.cs
 C:\Users\Lenovo\Desktop\FrontToBack\FrontToBack\FrontToBack\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\Book\Create.cshtml.g.cs
 C:\Users\Lenovo\Desktop\FrontToBack\FrontToBack\FrontToBack\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\Book\Index.cshtml.g.cs
+C:\Users\Lenovo\Desktop\FrontToBack\FrontToBack\FrontToBack\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\Lenovo\Desktop\FrontToBack\FrontToBack\FrontToBack\obj\Debug\netcoreapp3.1\Razor\Views\Account\Register.cshtml.g.cs
+C:\Users\Lenovo\Desktop\FrontToBack\FrontToBack\FrontToBack\obj\Debug\netcoreapp3.1\Razor\Views\Account\Login.cshtml.g.cs

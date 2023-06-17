@@ -33,8 +33,15 @@ using FrontToBack.ViewModels;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 4 "C:\Users\Lenovo\Desktop\FrontToBack\FrontToBack\FrontToBack\Views\_ViewImports.cshtml"
+using FrontToBack.ViewModels.Account;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"0aa627977ce258ebbbc787c62c0ad16970e477ff", @"/Views/Product/Index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"fcbe936c09745827c664c237b86b180ee3154142", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"7d659c7348d4e555fb20961613876c08c8148db9", @"/Views/_ViewImports.cshtml")]
     #nullable restore
     public class Views_Product_Index : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<List<Product>>
     #nullable disable
@@ -99,7 +106,7 @@ WriteAttributeValue("", 164, ViewBag.ProductsCount, 164, 22, false);
             BeginWriteAttribute("href", " href=\"", 529, "\"", 536, 0);
             EndWriteAttribute();
             WriteLiteral(">\r\n                                ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "0aa627977ce258ebbbc787c62c0ad16970e477ff6347", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "0aa627977ce258ebbbc787c62c0ad16970e477ff6552", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -131,7 +138,7 @@ AddHtmlAttributeValue("", 588, item.ProductImages.FirstOrDefault(i=>i.IsMainImag
                         </div>
                         <div class=""price"">
                              ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0aa627977ce258ebbbc787c62c0ad16970e477ff8381", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0aa627977ce258ebbbc787c62c0ad16970e477ff8586", async() => {
                 WriteLiteral("\r\n\r\n                            <span class=\"text-black-50\">Add to cart</span>\r\n                                 ");
             }
             );

@@ -33,8 +33,15 @@ using FrontToBack.ViewModels;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 4 "C:\Users\Lenovo\Desktop\FrontToBack\FrontToBack\FrontToBack\Views\_ViewImports.cshtml"
+using FrontToBack.ViewModels.Account;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"46222f47b589198f1d2112b26213bc45d6506732", @"/Views/Basket/AddToBasket.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"fcbe936c09745827c664c237b86b180ee3154142", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"7d659c7348d4e555fb20961613876c08c8148db9", @"/Views/_ViewImports.cshtml")]
     #nullable restore
     public class Views_Basket_AddToBasket : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<string>
     #nullable disable

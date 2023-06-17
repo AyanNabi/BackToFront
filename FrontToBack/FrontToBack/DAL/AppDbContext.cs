@@ -1,10 +1,12 @@
 ﻿using FrontToBack.Models;
 using FrontToBack.Models.Practice;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 namespace FrontToBack.DAL
 {
-    public class AppDbContext : DbContext
+    public class AppDbContext :IdentityDbContext<AppUser>//elave xusuisiyyeler vermishem deye onu artiq appuser kimi gorasun
     {
         public AppDbContext( DbContextOptions options) : base(options)
         {
@@ -25,6 +27,20 @@ namespace FrontToBack.DAL
         public DbSet<Book> Books { get; set; }
         public DbSet<Genre> Genres { get; set; }
         public DbSet<BookGenre> BookGenres { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+
+            var user = new AppUser()
+            {
+                UserName = "Ayan",
+                Email = "ayanmna@code.edu.az",
+                FullName = "Ayan Nabi",
+
+            };
+        }
+
 
 
 
