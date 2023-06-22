@@ -116,7 +116,15 @@
                                     </ul>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Blog</a>
+                                     @if (User.IsInRole("Admin"))
+                                        {
+                                            <a asp-area="adminarea" asp-controller="dashboard" asp-action="index" class="nav-link">
+                                                ADMIN
+                                            </a>
+                                            
+                                        }
+                                   
+                                       
                                     <ul class="list-unstyled py-3">
                                         <li class=""><a class="px-1" href="">Blog 1</a></li>
                                         <li class=""><a class="px-1" href="">Blog 2</a></li>

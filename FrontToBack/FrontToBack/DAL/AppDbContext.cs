@@ -28,18 +28,12 @@ namespace FrontToBack.DAL
         public DbSet<Genre> Genres { get; set; }
         public DbSet<BookGenre> BookGenres { get; set; }
 
-        protected override void OnModelCreating(ModelBuilder builder)
-        {
-            base.OnModelCreating(builder);
+        //protected override void OnModelCreating(ModelBuilder modelBuilder)
+        //{
+        //    modelBuilder.Seed();
+        //}
 
-            var user = new AppUser()
-            {
-                UserName = "Ayan",
-                Email = "ayanmna@code.edu.az",
-                FullName = "Ayan Nabi",
 
-            };
-        }
 
 
 

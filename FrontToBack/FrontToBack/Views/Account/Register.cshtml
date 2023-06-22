@@ -37,7 +37,7 @@
 
                             </div>
                             <h6 class="font-weight-light">Signing up is easy. It only takes a few steps</h6>
-                            <form class="pt-3" method="post"enctype="multipart/form-data">
+                            <form id="" class="myform pt-3" method="post"enctype="multipart/form-data">
                                 <div class="form-group">
                                     <input asp-for="Fullname" type="text" class="form-control form-control-lg" placeholder="Fullname">
                                     <span class="text-danger" asp-validation-for="Fullname"></span>
@@ -102,4 +102,15 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script>
+
+<script>
+
+    var signupForm = document.getElementById('myform');
+    var signupBtn = document.getElementById('signupBtn');
+
+    // Handle form submission
+    signupForm.addEventListener('submit', function (event) {
+        event.preventDefault(); // Prevent form from refreshing
+
+</script>
 </html>

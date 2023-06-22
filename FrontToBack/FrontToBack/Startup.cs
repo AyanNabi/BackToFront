@@ -27,6 +27,7 @@ namespace FrontToBack
         public void ConfigureServices(IServiceCollection services)
         {
             services.ServicesRegister(_config);
+      
 
         }
 
@@ -42,8 +43,8 @@ namespace FrontToBack
             app.UseRouting();
             app.UseStaticFiles();
             app.UseSession();
-            app.UseAuthentication();
             app.UseAuthorization();
+            app.UseAuthentication();
 
             app.UseEndpoints(endpoints =>
             {

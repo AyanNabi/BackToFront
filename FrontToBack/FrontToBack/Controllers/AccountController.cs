@@ -6,23 +6,23 @@ using FrontToBack.ViewModels.Account;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace FrontToBack.Controllers
 {
     public class AccountController : Controller
     {
-        readonly UserManager<AppUser> _usermanager;
-        readonly SignInManager<AppUser> _signInManager;
-        readonly RoleManager<AppUser> _roleManager;
+        private readonly SignInManager<AppUser> _signmanager;
+        private readonly UserManager<AppUser> _userManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
 
 
 
-
-        public AccountController(UserManager<AppUser> usermanager, SignInManager<AppUser> signInManager, RoleManager<AppUser> roleManager)
+        public AccountController(UserManager<AppUser> usermanager, SignInManager<AppUser> signInManager, RoleManager<IdentityRole> roleManager)
         {
-            _usermanager = usermanager;
-            _signInManager = signInManager;
+            _userManager = usermanager;
+            _signmanager = signInManager;
             _roleManager = roleManager;
         }
 
@@ -34,9 +34,6 @@ namespace FrontToBack.Controllers
         {
             return View();
         }
-
-
-
 
         [HttpPost]
         [AutoValidateAntiforgeryToken]
@@ -51,7 +48,7 @@ namespace FrontToBack.Controllers
             user.FullName = registerVM.Fullname;
             user.Email = registerVM.Email;
             user.UserName = registerVM.Username;
-            IdentityResult result = await _usermanager.CreateAsync(user, registerVM.Password);//startupdaki xetalari qaytaracaq. optionsda teyin etdiklerim ve defaultdakilar
+            IdentityResult result = await _userManager.CreateAsync(user, registerVM.Password);//startupdaki xetalari qaytaracaq. optionsda teyin etdiklerim ve defaultdakilar
             if (!result.Succeeded)
             {
                 foreach (var item in result.Errors)
@@ -64,7 +61,7 @@ namespace FrontToBack.Controllers
 
             }
 
-            await _usermanager.AddToRoleAsync(user, RoleEnums.Member.ToString());
+            await _userManager.AddToRoleAsync(user, RoleEnums.Member.ToString());
 
             //arxada session isledir
             return RedirectToAction("Index", "Home");
@@ -77,7 +74,7 @@ namespace FrontToBack.Controllers
 
         public async Task<IActionResult> Logout()
         {
-            await _signInManager.SignOutAsync();
+            await _signmanager.SignOutAsync();
             return RedirectToAction("Index", "Home");
         }
 
@@ -92,16 +89,16 @@ namespace FrontToBack.Controllers
 
         [HttpPost]
         [AutoValidateAntiforgeryToken]
-        public async Task<IActionResult> Login(LoginVM loginVM)
+        public async Task<IActionResult> Login(LoginVM loginVM, string returnURl)
         {
             if (!ModelState.IsValid)
             {
                 return View();
             }
-            AppUser user = await _usermanager.FindByNameAsync(loginVM.UsernameOrEmail);
+            AppUser user = await _userManager.FindByNameAsync(loginVM.UsernameOrEmail);
             if (user == null)
             {
-                user = await _usermanager.FindByEmailAsync(loginVM.UsernameOrEmail);
+                user = await _userManager.FindByEmailAsync(loginVM.UsernameOrEmail);
 
 
 
@@ -113,7 +110,7 @@ namespace FrontToBack.Controllers
                 return View();
             }
 
-            var result = await _signInManager.PasswordSignInAsync(user, loginVM.UsernameOrEmail, loginVM.RememberMe, true);
+            var result = await _signmanager.PasswordSignInAsync(user, loginVM.UsernameOrEmail, loginVM.RememberMe, true);
             if (result.Succeeded)
             {
                 ModelState.AddModelError("", "Username or email does not exist");
@@ -121,35 +118,42 @@ namespace FrontToBack.Controllers
 
 
             }
+            if (returnURl!=null)
+            {
+                return RedirectToAction(returnURl);
+            }
 
             if (result.IsLockedOut)
             {
                 ModelState.AddModelError("", "Your Entry is blocked");
                 return View();
 
+                //_usermanager.F
+            }
+            await _signmanager.SignInAsync(user, loginVM.RememberMe);
+            var userRoleList =await _userManager.GetRolesAsync(user);
+            
+            if (userRoleList.Contains(RoleEnums.Admin.ToString()))
+            {
+              return RedirectToAction("Index", "Dashboard", new {area= "adminArea"} );
 
             }
-            await _signInManager.SignInAsync(user, loginVM.RememberMe);
-
-
+            //_usermanager.RemoveFromRoleAsync(user,)
             return RedirectToAction("Index", "Home");
         }
 
 
         public async Task<IActionResult> AddRole()
         {
+           
             foreach (var item in Enum.GetValues(typeof(RoleEnums)))
             {
-            await _roleManager.CreateAsync(new IdentityRole { Name=item.ToString()});
-
+                await _roleManager.CreateAsync(new IdentityRole { Name = item.ToString() });
             }
-
-            
-
             return View();
         }
 
 
     }
 
-    }
+}
