@@ -191,3 +191,6 @@ C:\Users\Lenovo\Desktop\FrontToBack\FrontToBack\FrontToBack\obj\Debug\netcoreapp
 C:\Users\Lenovo\Desktop\FrontToBack\FrontToBack\FrontToBack\obj\Debug\netcoreapp3.1\Razor\Views\Account\Login.cshtml.g.cs
 C:\Users\Lenovo\Desktop\FrontToBack\FrontToBack\FrontToBack\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\Role\Index.cshtml.g.cs
 C:\Users\Lenovo\Desktop\FrontToBack\FrontToBack\FrontToBack\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\User\Index.cshtml.g.cs
+C:\Users\Lenovo\Desktop\FrontToBack\FrontToBack\FrontToBack\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\Role\Create.cshtml.g.cs
+C:\Users\Lenovo\Desktop\FrontToBack\FrontToBack\FrontToBack\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\Role\Update.cshtml.g.cs
+C:\Users\Lenovo\Desktop\FrontToBack\FrontToBack\FrontToBack\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\User\Update.cshtml.g.cs

@@ -1,0 +1,68 @@
+﻿@using FrontToBack.ViewModels
+@model RoleUpdateVM
+
+@{
+    ViewData["Title"] = "Update";
+    Layout = "~/Areas/AdminArea/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-6 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Update Category</h4>
+                <input name="userId" value="@Model.appUser.Id" />
+                <p>@Model.appUser.FullName</p>
+
+                <form method="post"  class="forms-sample">
+                    @foreach (var role in Model.Roles)
+                    {
+                        if (Model.UserRoles.Contains(role.Name))
+                        {
+                            <div class="form-group">
+                                <label>@role.Name</label>
+                                <input name="newRoles" value="@role.Name" checked type="checkbox" class="form-control">
+                            </div>
+                        }
+                        else{
+                            <div class="form-group">
+                                <label>@role.Name</label>
+                                <input name="newRoles" value="@role.Name" type="checkbox" class="form-control">
+                            </div>
+                        }
+                       @* @foreach (var userrole in Model.UserRoles)
+                        {
+                            if (role.ToString() == userrole)
+                            {
+                                <div class="form-group">
+                                    <label>@role.Name</label>
+                                    <input name="newRoles" value="@role.Name" checked type="checkbox" class="form-control">
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="form-group">
+                                    <label>@role.Name</label>
+                                    <input name="newRoles" value="@role.Name" type="checkbox" class="form-control">
+                                </div>
+                            }
+
+                        }*@
+
+                    }
+
+
+
+
+                    <button  type="submit" class="btn btn-primary mr-2">Submit</button>
+                    <a asp-controller="role" asp-action="index" class="btn btn-light">Cancel</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<partial name="_ValidationPartial"></partial>
+
+

@@ -39,10 +39,6 @@ namespace FrontToBack.ServicesRegistration
 
           ).AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders().AddErrorDescriber<CustomIdentityErrorDescriber>(); ;
 
-      //      services.AddIdentity<AppUser, IdentityRole>()
-      //.AddEntityFrameworkStores<AppDbContext>()
-      //.AddDefaultTokenProviders();
-
             services.AddScoped<RoleManager<IdentityRole>>();
             services.AddScoped<UserManager<AppUser>>();
         }

@@ -28,7 +28,8 @@ namespace FrontToBack.Areas.AdminArea.Controllers
             var products = _appDbContext.Products
                .Where(c => c.IsDeleted == false)
                  .Include(p => p.ProductImages)
-                 .Include(p => p.category).ToList();    
+                 .Include(p => p.category)
+                 .ToList();    
                
             return View(products);
         }

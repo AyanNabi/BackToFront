@@ -1,8 +1,6 @@
-﻿@using Microsoft.AspNetCore.Identity
-
-@*@model List<IdentityRole>
+﻿@model List<IdentityRole>
 @{
-    ViewData["Title"] = "Role";
+    ViewData["Title"] = "Index";
     Layout = "~/Areas/AdminArea/Views/Shared/_AdminLayout.cshtml";
 }
 
@@ -11,17 +9,13 @@
     <div class="col-lg-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Category Table</h4>
-                <a class="btn btn-success" asp-controller="category" asp-action="create">Add Category</a>
-
-
-
+                <h4 class="card-title">Role Table</h4>
+                <a class="btn btn-success" asp-controller="role" asp-action="create">Add Role</a>
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
                             <tr>
                                 <th>Name</th>
-                                <th>Desc</th>
                                 <th>Settings</th>
                             </tr>
                         </thead>
@@ -30,15 +24,14 @@
                             {
                                 <tr>
                                     <td>@item.Name</td>
-                                    <td>@item.Desc.Substring(0,11)</td>
                                     <td>
-                                        <a class="btn btn-danger" asp-controller="Category" asp-action="Delete" asp-route-id="@item.Id">
+                                        <a class="btn btn-danger" asp-controller="role" asp-action="Delete" asp-route-id="@item.Id">
                                             <i class="mdi mdi-delete"></i>
                                         </a>
-                                        <a class="btn btn-primary" asp-controller="Category" asp-action="Update" asp-route-id="@item.Id">
+                                        <a class="btn btn-primary" asp-controller="role" asp-action="Update" asp-route-id="@item.Id">
                                             <i class="mdi mdi-table-edit"></i>
                                         </a>
-                                        <a class="btn btn-success" asp-controller="Category" asp-action="Detail" asp-route-id="@item.Id">
+                                        <a class="btn btn-success" asp-controller="role" asp-action="Detail" asp-route-id="@item.Id">
                                             <i class="mdi mdi-account-card-details"></i>
                                         </a>
 
@@ -58,4 +51,3 @@
 </div>
 
 
-*@

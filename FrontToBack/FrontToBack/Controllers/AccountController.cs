@@ -109,8 +109,15 @@ namespace FrontToBack.Controllers
                 ModelState.AddModelError("", "Username or email does not exist");
                 return View();
             }
+            if (user.IsBlocked)
+            {
+                ModelState.AddModelError("", "Your Entry is blocked");
+                return View();
+
+            }
 
             var result = await _signmanager.PasswordSignInAsync(user, loginVM.UsernameOrEmail, loginVM.RememberMe, true);
+           
             if (result.Succeeded)
             {
                 ModelState.AddModelError("", "Username or email does not exist");
@@ -150,7 +157,8 @@ namespace FrontToBack.Controllers
             {
                 await _roleManager.CreateAsync(new IdentityRole { Name = item.ToString() });
             }
-            return View();
+
+            return RedirectToAction("Index", "category");
         }
 
 

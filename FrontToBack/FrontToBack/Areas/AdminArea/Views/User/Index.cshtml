@@ -8,21 +8,20 @@
     <div class="col-lg-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Category Table</h4>
-                <div id="mysearch" class="d-flex">
-
-                    <form action="">
-                        <label for="fname">First name:</label><br>
-                        <input type="text" id="fname" name="fname" value="John"><br>
-                       <button type="submit">Search</button>
-                    </form>
+                <h4 class="card-title">User Table</h4>
+                <form asp-action="index">
+                    <input name="name"><br>
+                    <button type="submit">Search</button>
+                </form>
 
 
 
+                   
 
-                </div>
 
-                <a class="btn btn-success" asp-controller="category" asp-action="create">Add Category</a>
+              
+
+                <a class="btn btn-success" asp-controller="category" asp-action="create">Add User</a>
 
 
 
@@ -36,24 +35,45 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (var item in Model)
+                            @foreach (var user in Model)
                             {
                                 <tr>
-                                    <td>@item.UserName</td>
-                                    <td>@item.FullName</td>
+                                    <td>@user.UserName</td>
+                                    <td>@user.FullName</td>
                                     <td>
-                                        <a class="btn btn-danger" asp-controller="User" asp-action="Delete" asp-route-id="@item.Id">
+                                        <a class="btn btn-danger" asp-controller="role" asp-action="Update" asp-route-id="@user.Id">
+                                            Change Role
+                                        </a>
+                                        <a class="btn btn-danger" asp-controller="User" asp-action="Delete" asp-route-id="@user.Id">
                                             <i class="mdi mdi-delete"></i>
                                         </a>
-                                        <a class="btn btn-primary" asp-controller="User" asp-action="Update" asp-route-id="@item.Id">
+                                        <a class="btn btn-primary" asp-controller="User" asp-action="Update" asp-route-id="@user.Id">
                                             <i class="mdi mdi-table-edit"></i>
                                         </a>
-                                        <a class="btn btn-success" asp-controller="User" asp-action="Detail" asp-route-id="@item.Id">
+                                        <a class="btn btn-success" asp-controller="User" asp-action="Detail" asp-route-id="@user.Id">
                                             <i class="mdi mdi-account-card-details"></i>
                                         </a>
-                                        <a class="btn btn-success" asp-controller="User" asp-action="Detail" asp-route-id="@item.Id">
-                                           Active
-                                        </a>
+
+                                       @if (User.Identity.Name!=user.UserName)
+                                        {
+                                            @if (user.IsBlocked)
+                                            {
+                                                <a class="btn btn-success" asp-controller="User" asp-action="BlockOrActivate" asp-route-id="@user.Id">
+                                                    Active
+                                                </a>
+                                            }
+                                            else
+                                            {
+                                                <a class="btn btn-danger" asp-controller="User" asp-action="BlockOrActivate" asp-route-id="@user.Id">
+                                                    Block
+                                                </a>
+
+                                            }
+                                        }
+
+                                       
+                                        
+                                       
 
 
 

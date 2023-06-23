@@ -1,0 +1,38 @@
+﻿@using FrontToBack.ViewModels
+@model RoleVM
+@{
+    ViewData["Title"] = "Update";
+    Layout = "~/Areas/AdminArea/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-md-6 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Update Category</h4>
+                
+                <form method="post" class="forms-sample">
+
+                    <div class="form-check">
+                        @foreach (var item in Model.Roles)
+                        {
+                         <input name="newRoles" value="@item.Name" checked type="checkbox" class="form-control">
+                            
+                        }
+
+                    </div>
+
+
+                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                    <a asp-controller="role" asp-action="index" class="btn btn-light">Cancel</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<partial name="_ValidationPartial"></partial>
+
+
