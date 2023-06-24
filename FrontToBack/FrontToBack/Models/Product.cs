@@ -15,6 +15,8 @@ namespace FrontToBack.Models
 
         public List<ProductImage> ProductImages { get; set; }
 
+
+
         public Product()
         {
             ProductImages= new List<ProductImage>();    

@@ -101,22 +101,23 @@ namespace FrontToBack.Areas.AdminArea.Controllers
         }
 
 
- 
-        
 
-        //public IActionResult Update(int id)
-        //{
-        //    if (id == null) return NotFound();
-        //    var category = _appDbContext.Categories.FirstOrDefault(c => c.Id == id);
-        //    if (category == null) return NotFound();
 
-        //    return View(new CategoryUpdateVM()
-        //    {
-        //        Name = category.Name,
-        //        Desc = category.Desc,
-        //    });
-        //}
 
+        public IActionResult Update(int id)
+        {
+            if (id == null) return NotFound();
+            var category = _appDbContext.Categories.FirstOrDefault(c => c.Id == id);
+            if (category == null) return NotFound();
+
+            return View(new CategoryUpdateVM()
+            {
+                Name = category.Name,
+                Desc = category.Desc,
+            });
+        }
+        //[HttpPost]
+        //[AutoValidateAntiforgeryToken]
         //public IActionResult Update(int? id, SliderUpdateVM categoryupdate)
         //{
         //    if (!ModelState.IsValid)
@@ -138,5 +139,65 @@ namespace FrontToBack.Areas.AdminArea.Controllers
         //    return RedirectToAction("Update");
         //}
 
+
+
+
+        [HttpPost]
+        [AutoValidateAntiforgeryToken]
+        public IActionResult Update(SliderUpdateVM sliderupdateVM, int? id)
+        {
+            if (ModelState.IsValid)
+            {
+                var slider = _appDbContext.BlogSliders.FirstOrDefault(s => s.Id == id);
+                if (slider == null)
+                {
+                    return NotFound();
+                }
+
+                string path = Path.Combine(_webenvironment.WebRootPath, "img", slider.ImageUrl);
+                if (System.IO.File.Exists(path))
+                {
+                    System.IO.File.Delete(path);
+                }
+                var newPictures = sliderupdateVM.Photos;
+                if (newPictures == null || newPictures.Length == 0)
+                {
+                    ModelState.AddModelError("Pictures", "Add a picture");
+                    return View(sliderupdateVM);
+                }
+
+                foreach (var picture in newPictures)
+                {
+                    if (picture == null)
+                    {
+                        ModelState.AddModelError("Pictures", "Add a picture");
+                        return View(sliderupdateVM);
+                    }
+
+                    if (!picture.CheckFileType())
+                    {
+                        ModelState.AddModelError("Pictures", "Choose a picture");
+                        return View(sliderupdateVM);
+                    }
+
+                    if (picture.CheckFileSize(1000))
+                    {
+                        ModelState.AddModelError("Pictures", "Big size");
+                        return View(sliderupdateVM);
+                    }
+
+                    slider.ImageUrl = picture.SaveImage(_webenvironment, "img");
+                }
+
+                _appDbContext.SaveChanges();
+
+                return RedirectToAction(nameof(Index));
+            }
+
+            return View(sliderupdateVM);
         }
+
+
+
     }
+}

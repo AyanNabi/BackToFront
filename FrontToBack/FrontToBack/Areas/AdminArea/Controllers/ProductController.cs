@@ -113,7 +113,7 @@ namespace FrontToBack.Areas.AdminArea.Controllers
 
          }
 
-
+       
 
         public IActionResult Update(int? id)
         {
@@ -126,15 +126,18 @@ namespace FrontToBack.Areas.AdminArea.Controllers
 
             return View(new UpdateProductVM()
             {
+
                 Name = product.Name,
                 Price = product.Price,
                 Count = product.Count,
-                CategoryId = product.CategoryId
+                CategoryId = product.CategoryId,
+                //Photos = product/*/*.*/*/
 
 
 
 
-            });
+
+            }); ;
 
         }
 

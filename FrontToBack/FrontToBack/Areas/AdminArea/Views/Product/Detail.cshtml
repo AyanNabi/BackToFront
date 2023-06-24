@@ -4,11 +4,11 @@
     Layout = "~/Areas/AdminArea/Views/Shared/_AdminLayout.cshtml";
 }
 <div class="d-flex">
-
+    
     @foreach (var item in Model.ProductImages)
     {
         <div>
-            <img class="mr-3" height="100" width="100" src="~/img/@item.ImageUrl" />
+            <img class="mr-3" height="100" width="100" src="~/img/ (@item.ImageUrl==null ? 'default.png':'@item.ImageUrl'  )" />
             <a asp-controller="Product" asp-action="RemoveImage" asp-route-id="@item.Id" class=" d-block mt-3">X</a>
 
         </div>

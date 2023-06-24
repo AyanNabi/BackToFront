@@ -27,13 +27,6 @@ using FrontToBack.ViewModels.AdminVM.Category;
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Users\Lenovo\Desktop\FrontToBack\FrontToBack\FrontToBack\Areas\AdminArea\Views\_ViewImports.cshtml"
-using FrontToBack.ViewModels.AdminVM.Slider;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
 #line 4 "C:\Users\Lenovo\Desktop\FrontToBack\FrontToBack\FrontToBack\Areas\AdminArea\Views\_ViewImports.cshtml"
 using FrontToBack.ViewModels.AdminVM.Product;
 
@@ -49,20 +42,27 @@ using FrontToBack.ViewModels.AdminVM.Book;
 #nullable disable
 #nullable restore
 #line 6 "C:\Users\Lenovo\Desktop\FrontToBack\FrontToBack\FrontToBack\Areas\AdminArea\Views\_ViewImports.cshtml"
-using FrontToBack.Models.Practice;
+using FrontToBack.ViewModels.AdminVM.Slider;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 7 "C:\Users\Lenovo\Desktop\FrontToBack\FrontToBack\FrontToBack\Areas\AdminArea\Views\_ViewImports.cshtml"
+using FrontToBack.Models.Practice;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 8 "C:\Users\Lenovo\Desktop\FrontToBack\FrontToBack\FrontToBack\Areas\AdminArea\Views\_ViewImports.cshtml"
 using Microsoft.AspNetCore.Identity;
 
 #line default
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"398dd76a87d509c849aa2e1b511a7451ee48c878", @"/Areas/AdminArea/Views/Category/Create.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"d49b31dd4685f9fb9fe58fb340972ea7125ed775", @"/Areas/AdminArea/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"359bb799678b5f8ffb92f95f1fbd1e1218a61ea2", @"/Areas/AdminArea/Views/_ViewImports.cshtml")]
     #nullable restore
     public class Areas_AdminArea_Views_Category_Create : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<CreateCategoryVM>
     #nullable disable
