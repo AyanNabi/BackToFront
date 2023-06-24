@@ -1,4 +1,5 @@
 using FrontToBack.DAL;
+using FrontToBack.Hubs;
 using FrontToBack.Services;
 using FrontToBack.ServicesRegistration;
 using Microsoft.AspNetCore.Builder;
@@ -45,6 +46,11 @@ namespace FrontToBack
             app.UseSession();
             app.UseAuthentication();
             app.UseAuthorization();
+           
+
+
+            //signalR
+
 
             app.UseEndpoints(endpoints =>
             {
@@ -59,9 +65,13 @@ namespace FrontToBack
 
               
             });
-         
 
 
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapHub<ChatHub>("/chat");
+                // ... other endpoint mappings
+            });
 
         }
     }

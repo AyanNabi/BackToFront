@@ -11,12 +11,14 @@
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title">Add Slider</h4>
+                <div asp-validation-summary="All" ></div>
 
-                <form method="post" action="Create" class="forms-sample" enctype="multipart/form-data">
+                <form method="post" action="create" class="forms-sample" enctype="multipart/form-data">
                     <div class="form-group">
-                        <label asp-for="Photo">Name</label>
-                        <input type="file" asp-for="Photo" class="form-control" placeholder="Name">
-                        <span class="text-danger" asp-validation-for="Photo"></span>
+
+                        <label asp-for="Photos">Name</label>
+                        <input type="file" asp-for="Photos" class="form-control" placeholder="Name" multiple>
+                        <span class="text-danger" asp-validation-for="Photos"></span>
                     </div>
                    
 

@@ -1,5 +1,6 @@
 ﻿using FrontToBack.DAL;
 using FrontToBack.Helper;
+using FrontToBack.Hubs;
 using FrontToBack.Models;
 using FrontToBack.Services;
 using Microsoft.AspNetCore.Identity;
@@ -41,6 +42,11 @@ namespace FrontToBack.ServicesRegistration
 
             services.AddScoped<RoleManager<IdentityRole>>();
             services.AddScoped<UserManager<AppUser>>();
+
+            //signalR configure
+           services.AddSignalR();
+            
+
         }
     }
 }

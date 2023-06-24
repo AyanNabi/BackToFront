@@ -6,6 +6,7 @@ using FrontToBack.ViewModels.AdminVM.Slider;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing.Constraints;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.IO;
 using System.Linq;
@@ -33,73 +34,72 @@ namespace FrontToBack.Areas.AdminArea.Controllers
         {
 
             if (id == null) return NotFound();
-            var slider = _appDbContext.SliderImages.FirstOrDefault(c => c.Id == id);
+            var slider = _appDbContext.BlogSliders
+                
+                .FirstOrDefault(c => c.Id == id);
             if (slider == null) return NotFound();
-            //_appDbContext.Categories.Where(c=>c.IsDeleted==false).ToList();
-            //_appDbContext.Categories.Remove(category);
+          
             string path = Path.Combine(_webenvironment.WebRootPath, "img", slider.ImageUrl);
-
             HelperServices.DeleteFile(path);
-            _appDbContext.SliderImages.Remove(slider);
+            _appDbContext.BlogSliders.Remove(slider);
             _appDbContext.SaveChanges();
             return RedirectToAction(nameof(Index));
         }
 
-       
+        public IActionResult Detail(int? id)
+        {
+            if (id == null) return NotFound();
+            var category = _appDbContext.Categories.FirstOrDefault(c => c.Id == id);
+            if (category == null) return NotFound();
+            return View(category);
+        }
+
+
         public IActionResult Create()
         {
             return View();
         }
+
         [HttpPost]
-        [AutoValidateAntiforgeryToken]
+        //[AutoValidateAntiforgeryToken]
 
         public IActionResult Create( SliderCreateVM sliderCreateVM)
         {
-            if (sliderCreateVM.Photo==null)
+            foreach (var photo in sliderCreateVM.Photos)
             {
-                ModelState.AddModelError("Photo", "Photo is required");
-                return View();
+                if (photo == null)
+                {
+                    ModelState.AddModelError("Photo", "Photo is required");
+                    return View();
+                }
 
+                if (!photo.CheckFileType())
+                {
 
+                    ModelState.AddModelError("Photo", "Duzgun sec");
+                    return View();
+
+                }
+                if (!photo.CheckFileSize(1000))
+                {
+
+                    ModelState.AddModelError("Photo", "Boyukdur");
+                    return View();
+
+                }
+
+                BlogSlider slider = new BlogSlider();
+                slider.ImageUrl = photo.SaveImage(_webenvironment, "img");
+                //slider.Photo = filename;
+                _appDbContext.BlogSliders.Add(slider);
+                _appDbContext.SaveChanges();
             }
-           
-            if (sliderCreateVM.Photo.CheckFileType() )
-            {
 
-                ModelState.AddModelError("Photo", "Duzgun sec");
-                return View();
-
-            }
-            if (sliderCreateVM.Photo.CheckFileSize(1000))
-            {
-
-                ModelState.AddModelError("Photo", "Boyukdur");
-                return View();
-
-            }
-            //SliderImage sliderImage = new SliderImage();
-            //sliderImage.ImageUrl = "";
-            //_appDbContext.SliderImages.Add(sliderImage);
-            //_appDbContext.SaveChanges();
-
-            
-
-            //var filename = Guid.NewGuid() + sliderCreateVM.Photo.FileName;
-            //var path = Path.Combine(_webenvironment.WebRootPath + "img" + filename);
           
-            //using (FileStream stream= new FileStream(path,FileMode.CreateNew))
-            //{
-            //    sliderCreateVM.Photo.CopyTo(stream);    
-            //}
-
-            BlogSlider slider = new BlogSlider();
-            slider.ImageUrl = sliderCreateVM.Photo.SaveImage(_webenvironment, "img");
-            //slider.Photo = filename;
-            _appDbContext.BlogSliders.Add(slider);
-            _appDbContext.SaveChanges();
 
             return RedirectToAction("Index");
         }
+
 
  
         

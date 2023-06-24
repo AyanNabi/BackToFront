@@ -1,0 +1,92 @@
+﻿
+
+<div class="container justify-content-between" >
+    <div>
+        <div class="row p-1">
+            <div class="col-1">User</div>
+            <div class="col-5"><input type="text" id="userInput" /></div>
+        </div>
+        <div class="row p-1">
+            <div class="col-1">Message</div>
+            <div class="col-5"><input type="text" class="w-100" id="messageInput" /></div>
+        </div>
+        <div class="row p-1">
+            <div class="col-6 text-end">
+                <input type="button" id="sendButton" value="Send Message" />
+            </div>
+        </div>
+        <div class="row p-1">
+            <div class="col-6">
+                <hr />
+            </div>
+        </div>
+        <div class="row p-1">
+            <div class="col-6">
+                <ul id="messagesList"></ul>
+            </div>
+        </div>
+
+    </div>
+    <div>
+        
+        <ul class="list-group">
+            @foreach (var item in ViewBag.Users)
+            {
+                <li class="list-group-item">
+                    
+                    <span id="@item.Id" class="@(item.ConnectionId!=null? "bg-online": "bg-offline") "
+                        style="display: inline-block; width:15px ; height:15px; border-radius:50%;  "></span>
+                    @item.FullName    <a asp-action="ShowAlert" asp-route-userid="@item.Id">SendAlert</a>
+                </li>
+                  
+
+            }
+           
+        </ul>
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.7/signalr.min.js" 
+integrity="sha512-w8K//0QrLkzgScjZIiDUHnxcDoKGGqy/OLa3X0PuRA6ZlZnwUCgaM26ro3ZFZ0AGElA+0SThNpsXNx2sCm5VuA==" 
+crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script>
+    var connection = new signalR.HubConnectionBuilder().withUrl("/chat").build();
+    connection.start();
+    console.log(connection);
+    document.getElementById("sendButton").addEventListener("click", function (event) {
+    var user = document.getElementById("userInput").value;
+    var message = document.getElementById("messageInput").value;
+    connection.invoke("SendMessage", user, message);
+    })
+
+        connection.on("ReceiveMessage", function(u,m){
+        var li = document.createElement("li");
+        document.getElementById("messagesList").appendChild(li);
+        // We can assign user-supplied strings to an element's textContent because it
+        // is not interpreted as markup. If you're assigning in any other way, you
+        // should be aware of possible script injection concerns.
+        li.textContent = `${u} says ${m}`;
+            console.log(u+""+m)
+        })
+    connection.on("userConnect", function (userId) {
+      document.getElementById(userId).classList.remove("bg-offline");
+        document.getElementById(userId).classList.add("bg-online");
+
+
+    })
+    
+
+    connection.on("userDisconnect", function (userId) {
+        document.getElementById(userId).classList.remove("bg-online");
+        document.getElementById(userId).classList.add("bg-offline");
+
+
+    })
+    connection.on("ShowAlert", function (userId) {
+        document.getElementById(userId).classList.remove("bg-online");
+        document.getElementById(userId).classList.add("bg-offline");
+
+
+    })
+
+</script>

@@ -1,12 +1,14 @@
 ﻿using FrontToBack.DAL;
 using FrontToBack.Helper;
 using FrontToBack.Models;
+using FrontToBack.ViewModels;
 using FrontToBack.ViewModels.AdminVM.Category;
 using FrontToBack.ViewModels.AdminVM.Product;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Linq;
 
 namespace FrontToBack.Areas.AdminArea.Controllers
@@ -23,16 +25,28 @@ namespace FrontToBack.Areas.AdminArea.Controllers
             _appDbContext = appDbContext;
             _webHostEnvironment = webHostEnvironment;   
         }
-        public IActionResult Index()
+        public IActionResult Index(int page=1,int take=2 )
         {
-            var products = _appDbContext.Products
+            var query = _appDbContext.Products.AsQueryable();   
+            var products = query
                .Where(c => c.IsDeleted == false)
                  .Include(p => p.ProductImages)
                  .Include(p => p.category)
-                 .ToList();    
-               
-            return View(products);
+                 .Skip((page-1)*take)
+                 .Take(take)
+                 .ToList();
+            var count = query.Count();
+            PaginationVM<Product> paginationVM = new PaginationVM<Product>(products, page, GetPageCount(count, take));
+
+            return View(paginationVM);
         }
+        private int GetPageCount(int count, int take)
+        {
+            return (int)Math.Ceiling((decimal)count/ take);
+         
+        }
+
+
 
         public IActionResult Create()
         {

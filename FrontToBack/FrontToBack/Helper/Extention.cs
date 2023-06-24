@@ -22,7 +22,7 @@ namespace FrontToBack.Helper
         public static string SaveImage(this IFormFile file, IWebHostEnvironment webHostEnvironment, string foldername)
         {
             
-                  var filename = Guid.NewGuid() + file.FileName;
+             var filename = Guid.NewGuid() + file.FileName;
             var path = Path.Combine(webHostEnvironment.WebRootPath, foldername, filename);
 
             using (FileStream stream = new FileStream(path, FileMode.CreateNew))

@@ -1,0 +1,31 @@
+﻿@model BlogSlider
+
+@{
+
+    ViewData["Title"] = "Detail";
+    Layout = "~/Areas/AdminArea/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="row">
+    
+    <div class="row">
+        <div class="col-md-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <img src="~/img/@Model.ImageUrl" />
+                    <h4 class="card-title">@Model.Profession</h4>
+
+                    <p>
+                        @*@Model.*@
+                    </p>
+                </div>
+            </div>
+            <a asp-controller="slider" asp-action="index">Back</a>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+

@@ -10,8 +10,7 @@ namespace FrontToBack.Models
         public string Content { get; set; }
         public string Author { get; set; }
         public string Profession { get; set; }
-        [NotMapped ]
-        public IFormFile Photo { get; set; }
+       
 
     }
 }
