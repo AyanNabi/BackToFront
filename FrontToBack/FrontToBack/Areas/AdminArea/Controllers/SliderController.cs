@@ -4,6 +4,7 @@ using FrontToBack.Models;
 using FrontToBack.ViewModels.AdminVM.Category;
 using FrontToBack.ViewModels.AdminVM.Slider;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing.Constraints;
 using Microsoft.EntityFrameworkCore;
@@ -104,18 +105,18 @@ namespace FrontToBack.Areas.AdminArea.Controllers
 
 
 
-        public IActionResult Update(int id)
-        {
-            if (id == null) return NotFound();
-            var category = _appDbContext.Categories.FirstOrDefault(c => c.Id == id);
-            if (category == null) return NotFound();
+        //public IActionResult Update(int id)
+        //{
+        //    if (id == null) return NotFound();
+        //    var category = _appDbContext.Categories.FirstOrDefault(c => c.Id == id);
+        //    if (category == null) return NotFound();
 
-            return View(new CategoryUpdateVM()
-            {
-                Name = category.Name,
-                Desc = category.Desc,
-            });
-        }
+        //    return View(new CategoryUpdateVM()
+        //    {
+        //        Name = category.Name,
+        //        Desc = category.Desc,
+        //    });
+        //}
         //[HttpPost]
         //[AutoValidateAntiforgeryToken]
         //public IActionResult Update(int? id, SliderUpdateVM categoryupdate)
@@ -139,6 +140,26 @@ namespace FrontToBack.Areas.AdminArea.Controllers
         //    return RedirectToAction("Update");
         //}
 
+        [HttpGet]
+        public IActionResult Update(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var slider = _appDbContext.BlogSliders.FirstOrDefault(s => s.Id == id);
+            if (slider == null)
+            {
+                return NotFound();
+            }
+
+            var sliderUpdateVM = new SliderCreateVM
+            {
+                Photos = new IFormFile[] { null }
+            };
+            return View(sliderUpdateVM);
+        }
 
 
 
